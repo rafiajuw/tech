@@ -2,14 +2,11 @@
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
-// Define props interface
 interface PrivacyPolicyProps {
-  sectionVariants?: Variants; // Optional variants for the main section
+  sectionVariants?: Variants;
 }
 
-// PrivacyPolicy component with explicit React.FC typing
 const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ sectionVariants }) => {
-  // Animation for policy sections on hover
   const policySectionVariants: Variants = {
     initial: { scale: 1, y: 0 },
     hover: {
@@ -20,7 +17,6 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ sectionVariants }) => {
     },
   };
 
-  // Default section variants if none provided
   const defaultSectionVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
@@ -37,7 +33,6 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ sectionVariants }) => {
       content:
         "We may collect personal information such as your name, email address, and IP address details when you interact with our platform. We also collect non-personal information like browser type, operating system, and usage data to improve our services.",
     },
-    // Add more sections as needed
   ];
 
   return (
@@ -46,7 +41,7 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ sectionVariants }) => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        variants={sectionVariants || defaultSectionVariants} // Use provided variants or fallback
+        variants={sectionVariants || defaultSectionVariants}
         className="bg-white p-8 rounded-xl shadow-lg border border-gray-100"
       >
         <h2
