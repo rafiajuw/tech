@@ -1,12 +1,14 @@
-"use client"
-import { motion } from 'framer-motion';
-import type { Variants } from 'framer-motion';
+"use client";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
+// Define props interface
 interface PrivacyPolicyProps {
   sectionVariants?: Variants;
 }
 
-export default function PrivacyPolicy({ sectionVariants }: PrivacyPolicyProps) {
+// Default export as a React component
+const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ sectionVariants }) => {
   // Animation for policy sections on hover
   const policySectionVariants: Variants = {
     initial: { scale: 1, y: 0 },
@@ -29,7 +31,7 @@ export default function PrivacyPolicy({ sectionVariants }: PrivacyPolicyProps) {
       content:
         "We may collect personal information such as your name, email address, and IP address details when you interact with our platform. We also collect non-personal information like browser type, operating system, and usage data to improve our services.",
     },
-    // ... other sections remain the same
+    // Add other sections here if needed
   ];
 
   return (
@@ -38,7 +40,7 @@ export default function PrivacyPolicy({ sectionVariants }: PrivacyPolicyProps) {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        variants={sectionVariants}
+        variants={sectionVariants || { hidden: { opacity: 0 }, visible: { opacity: 1 } }} // Fallback variants
         className="bg-white p-8 rounded-xl shadow-lg border border-gray-100"
       >
         <h2
@@ -62,7 +64,10 @@ export default function PrivacyPolicy({ sectionVariants }: PrivacyPolicyProps) {
             >
               {section.title}
             </h3>
-            <p className="text-gray-600 text-lg" style={{ fontFamily: "'Roboto', sans-serif" }}>
+            <p
+              className="text-gray-600 text-lg"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
+            >
               {section.content}
             </p>
           </motion.div>
@@ -70,4 +75,6 @@ export default function PrivacyPolicy({ sectionVariants }: PrivacyPolicyProps) {
       </motion.div>
     </div>
   );
-}
+};
+
+export default PrivacyPolicy;
